@@ -1,0 +1,27 @@
+<form id="completion_form" onsubmit="complete(event)">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Submit</button>
+</form>
+<textarea id="result" rows="20" cols="50"></textarea>
+<script>
+  function complete(event) {
+    event.preventDefault();
+
+    const url = "{% url 'gpt_form:complete' %}";
+    const form = document.getElementById("completion_form");
+    const textarea = document.getElementById("result");
+
+    const formData = new FormData(form);
+
+    fetch(url, {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.json())
+    .then(responseData => {
+      textarea.value = responseData["choices"][0]["text"];
+    })
+    .catch(error => console.error(error));
+  }
+</script>
