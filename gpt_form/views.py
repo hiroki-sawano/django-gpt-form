@@ -13,13 +13,8 @@ def complete(request):
         openai.api_key = settings.OPENAI_API_KEY
         try:
             response = openai.Completion.create(
-                model="text-davinci-003",
+                **settings.OPENAI_COMPLETION,
                 prompt=prompt,
-                max_tokens=7,
-                temperature=0,
-                top_p=1.0,
-                frequency_penalty=0.0,
-                presence_penalty=0.0
             )
             return JsonResponse(response)
         except:
