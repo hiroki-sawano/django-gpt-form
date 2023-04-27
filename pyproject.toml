@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-gpt-form"
+requires-python = ">=3.8"
+description = "Add simple GPT form to Django."
+classifiers=[
+    'Development Status :: 1 - Planning',
+    'Environment :: Web Environment',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: MIT License',
+    'Operating System :: OS Independent',
+    "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
+    'Programming Language :: Python',
+    "Programming Language :: Python :: 3",
+    'Programming Language :: Python :: 3.8',
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+license = {file = "LICENSE"}
+dependencies = [
+  "django>=3.2",
+  "openai",
+]
+authors = [{name = "Hiroki Sawano", email = "hiroki.sawano.2512@gmail.com"}]
+readme = "README.rst"
+keywords = ["forms", "django"]
+urls = {repository = "https://github.com/hiroki-sawano/django-gpt-form"}
+dynamic = ['version']
+
+[tool.setuptools.dynamic]
+version = {attr = "gpt_form.__version__"}
