@@ -8,7 +8,7 @@ Install the development version into your python environment using pip:
 
 ::
 
-   pip install .
+   pip install git+https://github.com/hiroki-sawano/django-gpt-form.git
 
 Add ``gpt_form`` to your ``INSTALLED_APPS`` and set ``OPENAI_API_KEY``
 to your OpenAI API key in settings.py:
