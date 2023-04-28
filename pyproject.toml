@@ -37,3 +37,10 @@ dynamic = ['version']
 
 [tool.setuptools.dynamic]
 version = {attr = "gpt_form.__version__"}
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "isort",
+    "pylama[toml]"
+]
