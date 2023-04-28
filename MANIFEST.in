@@ -1,1 +1,2 @@
 include gpt_form/templates/**/*.html
+include gpt_form/static/gpt_form/css/*.css
