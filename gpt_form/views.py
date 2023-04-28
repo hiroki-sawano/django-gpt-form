@@ -10,6 +10,8 @@ from django.views import View
 
 class BaseView(View):
     def dispatch(self, request, *args, **kwargs):
+        if not hasattr(settings, 'OPENAI_API_KEY'):
+            return HttpResponseServerError()
         openai.api_key = settings.OPENAI_API_KEY
         return super().dispatch(request, *args, **kwargs)
 
