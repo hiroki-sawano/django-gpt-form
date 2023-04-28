@@ -45,7 +45,8 @@ form:
    {% completion_form %}
 
 .. image:: images/completion-form.png
-  :width: 400
+   :width: 400
+   :align: center
 
 Optional Configuration
 ----------------------
