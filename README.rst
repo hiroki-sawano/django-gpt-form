@@ -44,7 +44,7 @@ form:
 
    {% completion_form %}
 
-.. image:: images/completion-form.jpg
+.. image:: images/completion-form.png
   :width: 400
   :align: center
 
