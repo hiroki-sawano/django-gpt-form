@@ -20,11 +20,14 @@ class Completion(BaseView):
     def post(self, request, *args, **kwargs):
         prompt = request.POST.get('prompt')
         if prompt:
+            params = {
+                'model': 'text-davinci-003',
+            }
+            if hasattr(settings, 'OPENAI_COMPLETION'):
+                params = {**params, **settings.OPENAI_COMPLETION}
+            params['prompt'] = prompt
             try:
-                response = openai.Completion.create(
-                    **settings.OPENAI_COMPLETION,
-                    prompt=prompt,
-                )
+                response = openai.Completion.create(**params)
                 return JsonResponse(response)
             except:
                 return HttpResponseServerError()
