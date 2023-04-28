@@ -35,6 +35,9 @@ keywords = ["forms", "django"]
 urls = {repository = "https://github.com/hiroki-sawano/django-gpt-form"}
 dynamic = ['version']
 
+[tool.setuptools]
+packages = ["gpt_form"]
+
 [tool.setuptools.dynamic]
 version = {attr = "gpt_form.__version__"}
 
