@@ -1,10 +1,7 @@
 import openai
 from django.conf import settings
-from django.http.response import (
-    HttpResponseBadRequest,
-    HttpResponseServerError,
-    JsonResponse,
-)
+from django.http.response import (HttpResponseBadRequest,
+                                  HttpResponseServerError, JsonResponse)
 from django.views import View
 
 
