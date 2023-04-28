@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-gpt-form"
-requires-python = ">=3.8"
+requires-python = ">=3.7"
 description = "Add simple GPT form to Django."
 classifiers=[
     'Development Status :: 1 - Planning',
@@ -19,6 +19,7 @@ classifiers=[
     "Framework :: Django :: 4.2",
     'Programming Language :: Python',
     "Programming Language :: Python :: 3",
+    'Programming Language :: Python :: 3.7',
     'Programming Language :: Python :: 3.8',
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
