@@ -4,6 +4,7 @@
   <button type="submit">Submit</button>
 </form>
 <textarea id="result" rows="20" cols="50"></textarea>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
   function complete(event) {
     event.preventDefault();
@@ -14,13 +15,9 @@
 
     const formData = new FormData(form);
 
-    fetch(url, {
-      method: "POST",
-      body: formData
-    })
-    .then(response => response.json())
-    .then(responseData => {
-      textarea.value = responseData["choices"][0]["text"];
+    axios.post(url, formData)
+    .then(response => {
+      textarea.value = response.data.choices[0].text;
     })
     .catch(error => console.error(error));
   }
