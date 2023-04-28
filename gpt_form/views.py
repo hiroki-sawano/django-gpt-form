@@ -5,18 +5,25 @@ from django.http.response import (
     HttpResponseServerError,
     JsonResponse,
 )
+from django.views import View
 
 
-def complete(request):
-    prompt = request.POST.get('prompt')
-    if prompt:
+class BaseView(View):
+    def dispatch(self, request, *args, **kwargs):
         openai.api_key = settings.OPENAI_API_KEY
-        try:
-            response = openai.Completion.create(
-                **settings.OPENAI_COMPLETION,
-                prompt=prompt,
-            )
-            return JsonResponse(response)
-        except:
-            return HttpResponseServerError()
-    return HttpResponseBadRequest()
+        return super().dispatch(request, *args, **kwargs)
+
+
+class Completion(BaseView):
+    def post(self, request, *args, **kwargs):
+        prompt = request.POST.get('prompt')
+        if prompt:
+            try:
+                response = openai.Completion.create(
+                    **settings.OPENAI_COMPLETION,
+                    prompt=prompt,
+                )
+                return JsonResponse(response)
+            except:
+                return HttpResponseServerError()
+        return HttpResponseBadRequest()
