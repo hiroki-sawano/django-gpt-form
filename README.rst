@@ -44,6 +44,8 @@ form:
 
    {% completion_form %}
 
+.. image:: images/completion-form.png
+
 Optional Configuration
 ----------------------
 
