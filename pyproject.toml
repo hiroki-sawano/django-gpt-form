@@ -44,3 +44,7 @@ dev = [
     "isort",
     "pylama[toml]"
 ]
+
+[tool.pylama]
+skip = "*/__init__.py"
+linters = "pycodestyle,pydocstyle,pyflakes,mccabe"
