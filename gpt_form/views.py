@@ -4,6 +4,8 @@ from django.http.response import (HttpResponseBadRequest,
                                   HttpResponseServerError, JsonResponse)
 from django.views import View
 
+from gpt_form.forms import CompletionForm
+
 
 class BaseView(View):
     def dispatch(self, request, *args, **kwargs):
@@ -15,14 +17,14 @@ class BaseView(View):
 
 class Completion(BaseView):
     def post(self, request, *args, **kwargs):
-        prompt = request.POST.get('prompt')
-        if prompt:
+        form = CompletionForm(request.POST)
+        if form.is_valid():
             params = {
                 'model': 'text-davinci-003',
             }
             if hasattr(settings, 'OPENAI_COMPLETION'):
                 params = {**params, **settings.OPENAI_COMPLETION}
-            params['prompt'] = prompt
+            params['prompt'] = form.cleaned_data['prompt']
             try:
                 response = openai.Completion.create(**params)
                 return JsonResponse(response)
