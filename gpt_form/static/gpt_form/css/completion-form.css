@@ -114,3 +114,9 @@
 .chat-footer button:hover {
   background-color: gray;
 }
+
+.chat-footer button:disabled {
+  background-color: gray;
+  color: #aaaaaa;
+  cursor: not-allowed;
+}
